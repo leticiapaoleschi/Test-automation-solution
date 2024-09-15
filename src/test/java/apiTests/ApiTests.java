@@ -20,7 +20,7 @@ public class ApiTests {
     private static String baseUrl;
     private static String userID;
     private static String token;
-    private final String userName = "Pedro9";
+    private final String userName = "Pedro10";
     private final String password = "#Root@123";
 
     @Before

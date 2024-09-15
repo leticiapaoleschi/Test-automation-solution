@@ -56,10 +56,6 @@ public class BasePage{
         }
     }
 
-//    public void click(By locator) {
-//        WebElement element = driver.findElement(locator);
-//        element.click();
-//    }
 
     public void click(By locator) {
         try {

@@ -94,10 +94,8 @@ public class FormPage extends BasePage {
 
 
     public void submit() {
-        // Scroll para o elemento
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].scrollIntoView(true);", findElement(submitButton));
-        // Clica no elemento
         click(submitButton);
     }
     public void state(String stateValue) {
