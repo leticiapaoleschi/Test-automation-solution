@@ -18,4 +18,4 @@ $ API tests
 # Click with right button and run the ApiTests.java for the API tests
 ```
 
-
+Made with :hearts: by Letícia Paoleschi :wave: [Get in touch!](https://www.linkedin.com/in/leticiapaoleschi/)
