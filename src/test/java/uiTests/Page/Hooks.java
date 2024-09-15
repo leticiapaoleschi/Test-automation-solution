@@ -1,29 +1,37 @@
 package uiTests.Page;
 
 import io.cucumber.java.After;
-import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import io.cucumber.java.Before;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
+import java.nio.file.Paths;
 
 
 public class Hooks {
     private WebDriver driver;
-    protected static String baseUrl = System.getProperty("baseUrl","https://demoqa.com/");
     @Before
-    public void beforeScenario() {
-        System.setProperty("webdriver.chrome.driver", "C://Users//Letícia//IdeaProjects//challengeQA//src//test//resources//chromedriver.exe");
-        driver = new chromeDriver();
+    public void setup() {
+        String driverPath = Paths.get("src", "test", "resources", "chromedriver-win64", "chromedriver.exe").toString();
+        System.setProperty("webdriver.chrome.driver", driverPath);
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        WebDriver.Timeouts timeouts = driver.manage().timeouts().Wait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
+    @After
+    public void afterScenario() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
     public WebDriver getDriver() {
         return driver;
-    }
-    @After
-    public void afterScenario(){
-        if (driver != null) {
-            driver.close();
-        }
     }
 }
